@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vimaan Dynamic — AI Drone Urban Safety</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <div id="scan-ring"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-name">Vimaan Dynamic</div>
+    <div class="loader-status" id="loader-status">Initializing systems...</div>
+    <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+  </div>
+
+  <!-- Background orbs -->
+  <div class="orb" id="orb1"></div>
+  <div class="orb" id="orb2"></div>
+
+  <!-- Telemetry HUD (bottom-left) -->
+  <div id="telemetry">
+    <div class="telem-line">ALT <span class="telem-val" id="t-alt">0.0m</span></div>
+    <div class="telem-line">SPD <span class="telem-val" id="t-spd">0.0 m/s</span></div>
+    <div class="telem-line">BAT <span class="telem-val" id="t-bat">98%</span></div>
+    <div class="telem-line">LAT <span class="telem-val">18.5204°N</span></div>
+  </div>
+
+  <!-- Section status badge (top-right) -->
+  <div id="section-badge">
+    <div class="badge-inner">
+      <div class="badge-dot"></div>
+      <span id="badge-text">STANDBY</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">VIMAAN<span>.</span></div>
+    <div class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#platform">Platform</a>
+      <a href="#tech">Tech</a>
+      <a href="#team">Team</a>
+      <a href="#cta" class="nav-deploy">Deploy →</a>
+    </div>
+  </nav>
+
+  <!-- Three.js hero background canvas -->
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- Main scroll content -->
+  <div id="scroll-wrap">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div>
+        <div class="hero-tag">Vimaan Dynamic · Urban Safety AI</div>
+        <h1 class="hero-title">
+          Autonomous Drone<br /><span>Response Platform</span>
+        </h1>
+        <p class="hero-sub">
+          AI-powered simulation infrastructure for autonomous drone-based
+          emergency response across urban environments.
+        </p>
+        <div class="hero-cta">
+          <a href="#cta" class="btn-deploy" id="deploy-btn">⬡ &nbsp;Deploy Simulation</a>
+          <a href="#wow-section" class="btn-sim">View Live Demo →</a>
+        </div>
+        <div class="scroll-hint">
+          <span>Scroll to explore</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MISSION ── -->
+    <section class="section" id="mission">
+      <div class="section-inner">
+        <div class="info-card" data-reveal>
+          <div class="card-num">01 · Mission</div>
+          <h2 class="card-title">Urban Safety,<br /><em>Redefined</em></h2>
+          <p class="card-body">
+            Cities face critical response gaps — fires, medical emergencies,
+            and security incidents where every second counts. Vimaan Dynamic
+            deploys AI-powered autonomous drones that reach any urban location
+            within minutes, with zero human risk during the first response window.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Zero Delay</span>
+            <span class="tag">AI Navigation</span>
+            <span class="tag">24/7 Coverage</span>
+          </div>
+        </div>
+        <div class="visual-side" data-reveal-right>
+          <div class="vis-box"><canvas class="hud-canvas" id="canvas-mission"></canvas></div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-val" data-count="3" data-suffix="x">0x</div>
+              <div class="stat-lbl">Faster Response</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val" data-count="94" data-suffix="%">0%</div>
+              <div class="stat-lbl">Coverage Rate</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val">0</div>
+              <div class="stat-lbl">Human Risk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PLATFORM ── -->
+    <section class="section" id="platform">
+      <div class="section-inner rev">
+        <div class="info-card" data-reveal>
+          <div class="card-num">02 · Platform</div>
+          <h2 class="card-title">Simulation-<br /><em>First</em> Design</h2>
+          <p class="card-body">
+            Our web-based simulation platform lets city planners, emergency
+            services, and researchers test autonomous drone fleets across
+            photorealistic urban environments — before a single real drone takes
+            flight. Model disasters, optimize routes, and validate safety
+            protocols at scale.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Digital Twin</span>
+            <span class="tag">Real-time Sim</span>
+            <span class="tag">Multi-agent</span>
+          </div>
+        </div>
+        <div class="visual-side" data-reveal-right>
+          <div class="vis-box"><canvas class="hud-canvas" id="canvas-platform"></canvas></div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-val" data-count="50" data-suffix="+">0+</div>
+              <div class="stat-lbl">Scenarios</div>
+            </div>
+            <div class="stat"><div class="stat-val">Real-time</div><div class="stat-lbl">Physics</div></div>
+            <div class="stat"><div class="stat-val">Fleet</div><div class="stat-lbl">Coordination</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECH ── -->
+    <section class="section" id="tech">
+      <div class="section-inner">
+        <div class="info-card" data-reveal>
+          <div class="card-num">03 · Intelligence</div>
+          <h2 class="card-title">AI That<br /><em>Thinks Fast</em></h2>
+          <p class="card-body">
+            Onboard edge AI processes real-time sensor data — thermal imaging,
+            object detection, obstacle mapping — making autonomous decisions in
+            milliseconds. Our reinforcement learning models are trained entirely
+            within the simulation, deployed to real hardware with zero retraining.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Edge AI</span>
+            <span class="tag">Thermal Vision</span>
+            <span class="tag">RL Trained</span>
+          </div>
+        </div>
+        <div class="visual-side" data-reveal-right>
+          <div class="vis-box"><canvas class="hud-canvas" id="canvas-tech"></canvas></div>
+          <div class="stat-row">
+            <div class="stat"><div class="stat-val">&lt;80ms</div><div class="stat-lbl">Decision Time</div></div>
+            <div class="stat"><div class="stat-val">360°</div><div class="stat-lbl">Perception</div></div>
+            <div class="stat"><div class="stat-val">Sim→Real</div><div class="stat-lbl">Transfer</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LIVE INCIDENT (WOW SECTION) ── -->
+    <section id="wow-section">
+      <canvas id="incident-canvas"></canvas>
+      <div class="wow-label">
+        <h2 id="wow-h2">Live Incident Detection</h2>
+        <p id="wow-p">Click anywhere to trigger an emergency dispatch</p>
+        <div class="wow-click" id="wow-click">⬡ &nbsp;Click to deploy</div>
+      </div>
+    </section>
+
+    <!-- ── IMPACT ── -->
+    <section class="section" id="impact">
+      <div class="section-inner rev">
+        <div class="info-card" data-reveal>
+          <div class="card-num">04 · Impact</div>
+          <h2 class="card-title">Cities That<br /><em>Never Sleep</em></h2>
+          <p class="card-body">
+            From flood response to wildfire containment to medical supply drops
+            — Vimaan's fleet operates around the clock. Our platform integrates
+            directly with city emergency dispatch systems, auto-deploying the
+            nearest drone the moment an incident is flagged.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Flood Response</span>
+            <span class="tag">Fire Recon</span>
+            <span class="tag">Medical Drop</span>
+          </div>
+        </div>
+        <div class="visual-side" data-reveal-right>
+          <div class="vis-box"><canvas class="hud-canvas" id="canvas-impact"></canvas></div>
+          <div class="stat-row">
+            <div class="stat"><div class="stat-val">∞</div><div class="stat-lbl">Use Cases</div></div>
+            <div class="stat"><div class="stat-val">Auto</div><div class="stat-lbl">Dispatch</div></div>
+            <div class="stat"><div class="stat-val">City-wide</div><div class="stat-lbl">Coverage</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── METRICS ── -->
+    <section id="light-section">
+      <div class="light-inner">
+        <p style="font-size:11px;letter-spacing:.4em;color:var(--accent2);text-transform:uppercase;margin-bottom:14px">
+          By The Numbers
+        </p>
+        <h2 class="light-title">Real Impact,<br /><span>Real Cities</span></h2>
+        <p class="light-body">
+          Validated across 12 metropolitan environments. The data speaks for itself.
+        </p>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-val">2.4min</div><div class="metric-lbl">Avg Response</div></div>
+          <div class="metric"><div class="metric-val">99.2%</div><div class="metric-lbl">Uptime</div></div>
+          <div class="metric"><div class="metric-val">12</div><div class="metric-lbl">Cities Simulated</div></div>
+          <div class="metric"><div class="metric-val">0</div><div class="metric-lbl">Collisions in Sim</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHILOSOPHY ── -->
+    <section id="minimal-section">
+      <div>
+        <div class="minimal-label">Philosophy</div>
+        <h2 class="minimal-title">
+          <span class="word" style="transition-delay:.0s">Every</span>&nbsp;
+          <span class="word" style="transition-delay:.12s">second</span>&nbsp;
+          <span class="word" style="transition-delay:.24s">saves</span>&nbsp;
+          <span class="word" style="color:var(--accent);transition-delay:.36s">lives.</span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- ── TEAM ── -->
+    <section id="team">
+      <div class="team-title">Team <span>Vimaan Dynamic</span></div>
+      <p class="team-sub">Building the future of autonomous urban safety</p>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="member-avatar">PL</div>
+          <div class="member-name">Pilot Lead</div>
+          <div class="member-role">Systems &amp; AI</div>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">SE</div>
+          <div class="member-name">Sim Engineer</div>
+          <div class="member-role">Platform Dev</div>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">ML</div>
+          <div class="member-name">ML Engineer</div>
+          <div class="member-role">RL &amp; Vision</div>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">UX</div>
+          <div class="member-name">UI/UX Lead</div>
+          <div class="member-role">Design &amp; Web</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section id="cta">
+      <div class="cta-inner">
+        <div class="cta-label">Vimaan Dynamic · Hackathon 2025</div>
+        <h2 class="cta-title">Ready to Deploy?</h2>
+        <p class="cta-sub">
+          Launch the simulation. Experience the future of urban emergency response.
+        </p>
+        <div class="cta-buttons">
+          <a href="#hero" class="cta-btn-primary">⬡ &nbsp;Launch Simulation</a>
+          <a href="#wow-section" class="cta-btn-ghost">View Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /#scroll-wrap -->
+
+  <!-- External libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- App modules (order matters) -->
+  <script src="js/audio.js"></script>
+  <script src="js/drone.js"></script>
+  <script src="js/hud.js"></script>
+  <script src="js/incident.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
